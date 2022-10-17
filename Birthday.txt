@@ -1,0 +1,127 @@
+import java.util.List;
+import java.util.Scanner;
+
+public class Main {
+
+
+    public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    List<String[]> wordArray = null;
+        while(true) {
+            String fullString = sc.nextLine();
+            if(fullString.equalsIgnoreCase("end"))
+                break;
+        wordArray.add(sc.nextLine().split(" "));
+    }
+        String inputYear = sc.next();
+        for (String[] word : wordArray) {
+            String year = null;
+            switch(word[0]) {
+                case "Citizen":
+                    year = word[4].split("/")[2];
+                    break;
+                case "Pet":
+                    year = word[4].split("/")[2];
+                    break;
+            }
+            if (year != null) {
+                if (inputYear.equals(year)) {
+                    switch (word[0]) {
+                        case "Citizen":
+                            System.out.println(word[4]);
+                            break;
+                        case "Pet":
+                            System.out.println(word[2]);
+                            break;
+                    }
+                }
+            }
+        }
+    }
+}
+
+import Interfaces.Identifiable;
+
+public class Robot implements Identifiable {
+    String id;
+    String model;
+
+    Robot() {
+        this.id = id;
+        this.model = model;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getModel() {
+        return model;
+    }
+}
+
+import Interfaces.Birthable;
+
+public class Pet implements Birthable {
+    String name;
+    String birthDate;
+
+    public String getName() {
+        return name;
+    }
+
+    public String getBirthDate() {
+        return birthDate;
+    }
+
+    public Pet(String name, String birthDate) {
+        this.name = name;
+        this.birthDate = birthDate;
+    }
+}
+
+package Interfaces;
+
+public interface Identifiable {
+    public String getId();
+}
+
+package Interfaces;
+
+public interface Birthable {
+
+}
+
+import Interfaces.Birthable;
+import Interfaces.Identifiable;
+
+public class Citizen implements Identifiable {
+    private String name;
+    private int age;
+    private String id;
+    private String birthDate;
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getBirthDate() {
+        return birthDate;
+    }
+
+
+    Citizen() {
+        this.name = name;
+        this.age = age;
+        this.id = id;
+        this.birthDate = birthDate;
+    }
+}
